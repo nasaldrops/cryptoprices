@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
-import './App.css';
-import axios from 'axios';
-
-
+import React, { useState } from "react";
+import "./App.css";
+import axios from "axios";
 
 function App() {
-
-  const [price, setPrice] = useState('');
-
-
+  const [price, setPrice] = useState("");
+  const [cPair, setPair] = useState("");
 
   const fetchPrice = async () => {
     const result = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=SHIBBUSD');
@@ -23,7 +19,17 @@ function App() {
     console.log(result.data.price)
     setPrice(result.data.price)
 
+  const cryptoPair = (event) => {
+    console.log(event.target.value);
+    setPair(event.target.value);
+  };
 
+  const getPrice = async () => {
+    const result = await axios.get(
+      "https://api.binance.com/api/v3/ticker/price?symbol=SHIBBUSD"
+    );
+    console.log(result.data.price);
+    setPrice(result.data.price);
   };
 
   return (
@@ -34,13 +40,8 @@ function App() {
         <br />
         <button onClick={fetchPriceLUNC} className="btn btn-warning btn-lg">LUNC Price</button>
       </div>
-
     </div>
-  )
-
+  );
 }
 
-
 export default App;
-
-
