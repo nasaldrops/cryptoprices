@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/nasaldrops/crypto/static/css/main.4a4d07b9.css",
-    "main.js": "/nasaldrops/crypto/static/js/main.50941226.js",
-    "static/js/787.4e502d9c.chunk.js": "/nasaldrops/crypto/static/js/787.4e502d9c.chunk.js",
-    "index.html": "/nasaldrops/crypto/index.html",
-    "main.4a4d07b9.css.map": "/nasaldrops/crypto/static/css/main.4a4d07b9.css.map",
-    "main.50941226.js.map": "/nasaldrops/crypto/static/js/main.50941226.js.map",
-    "787.4e502d9c.chunk.js.map": "/nasaldrops/crypto/static/js/787.4e502d9c.chunk.js.map"
+    "main.css": "/users/nasaldrops/projects/1/static/css/main.4a4d07b9.css",
+    "main.js": "/users/nasaldrops/projects/1/static/js/main.e192f9d8.js",
+    "static/js/787.4e502d9c.chunk.js": "/users/nasaldrops/projects/1/static/js/787.4e502d9c.chunk.js",
+    "index.html": "/users/nasaldrops/projects/1/index.html",
+    "main.4a4d07b9.css.map": "/users/nasaldrops/projects/1/static/css/main.4a4d07b9.css.map",
+    "main.e192f9d8.js.map": "/users/nasaldrops/projects/1/static/js/main.e192f9d8.js.map",
+    "787.4e502d9c.chunk.js.map": "/users/nasaldrops/projects/1/static/js/787.4e502d9c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4a4d07b9.css",
-    "static/js/main.50941226.js"
+    "static/js/main.e192f9d8.js"
   ]
 }
