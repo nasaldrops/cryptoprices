@@ -12,9 +12,6 @@ function App() {
   const [btcPrice, setBtcPrice] = useState('');
   const [dogePrice, setDogePrice] = useState('');
   const [eurPrice, setEurPrice] = useState('');
-  const [donadeaWeather, setDonadeaWeather] = useState('');
-  const [windSpeed, setWindSpeed] = useState('');
-
 
   const fetchPrice = async () => {
     const result = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=SHIBBUSD');
@@ -63,16 +60,8 @@ function App() {
 
 
   };
-    
-  const fetchWeather = async () => {
-    const result = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=53.3477317&lon=-6.7444321&appid=834d978066a850d20e566854e9103773&units=metric');
-    console.log(result.data.main.temp)
-    setDonadeaWeather(result.data.main.temp)
-    setWindSpeed(result.data.wind.speed)
-    
 
 
-  };
 
   return (
     <div className="container">
@@ -94,14 +83,11 @@ function App() {
         <br />
         <h1 className="title"> {eurPrice} </h1>
         <button onClick={fetchPriceEURO} className="btn btn-warning btn-lg">EUR Price</button>
-        <h1 className="title" class="wind"> temp: {donadeaWeather} wind speed: {windSpeed} </h1>
-        <button onClick={fetchWeather} className="btn btn-warning btn-lg">Weather</button>
       </div>
 
     </div>
   )
 
 }
-
 
 export default App;
