@@ -11,7 +11,9 @@ function App() {
   const [ethPrice, setEthPrice] = useState('');
   const [btcPrice, setBtcPrice] = useState('');
   const [dogePrice, setDogePrice] = useState('');
-
+  const [eurPrice, setEurPrice] = useState('');
+  const [donadeaWeather, setDonadeaWeather] = useState('');
+  const [windSpeed, setWindSpeed] = useState('');
 
 
   const fetchPrice = async () => {
@@ -54,6 +56,24 @@ function App() {
 
   };
 
+  const fetchPriceEURO = async () => {
+    const result = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=EURBUSD');
+    console.log(result.data.price)
+    setEurPrice(result.data.price)
+
+
+  };
+    
+  const fetchWeather = async () => {
+    const result = await axios.get('https://api.openweathermap.org/data/2.5/weather?lat=53.3477317&lon=-6.7444321&appid=834d978066a850d20e566854e9103773&units=metric');
+    console.log(result.data.main.temp)
+    setDonadeaWeather(result.data.main.temp)
+    setWindSpeed(result.data.wind.speed)
+    
+
+
+  };
+
   return (
     <div className="container">
       <div>
@@ -71,6 +91,11 @@ function App() {
         <br />
         <h1 className="title"> {btcPrice} </h1>
         <button onClick={fetchPriceBTC} className="btn btn-warning btn-lg">BTC Price</button>
+        <br />
+        <h1 className="title"> {eurPrice} </h1>
+        <button onClick={fetchPriceEURO} className="btn btn-warning btn-lg">EUR Price</button>
+        <h1 className="title" class="wind"> temp: {donadeaWeather} wind speed: {windSpeed} </h1>
+        <button onClick={fetchWeather} className="btn btn-warning btn-lg">Weather</button>
       </div>
 
     </div>
