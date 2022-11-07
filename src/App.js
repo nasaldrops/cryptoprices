@@ -10,6 +10,7 @@ function App() {
   const [luncPrice, setLuncPrice] = useState('');
   const [ethPrice, setEthPrice] = useState('');
   const [btcPrice, setBtcPrice] = useState('');
+  const [dogePrice, setDogePrice] = useState('');
 
 
 
@@ -45,6 +46,14 @@ function App() {
 
   };
 
+  const fetchPriceDOGE = async () => {
+    const result = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=DOGEBUSD');
+    console.log(result.data.price)
+    setDogePrice(result.data.price)
+
+
+  };
+
   return (
     <div className="container">
       <div>
@@ -53,6 +62,9 @@ function App() {
         <br />
         <h1 className="title"> {luncPrice} </h1>
         <button onClick={fetchPriceLUNC} className="btn btn-warning btn-lg">LUNC Price</button>
+        <br />
+        <h1 className="title"> {dogePrice} </h1>
+        <button onClick={fetchPriceDOGE} className="btn btn-warning btn-lg">DOGE Price</button>
         <br />
         <h1 className="title"> {ethPrice} </h1>
         <button onClick={fetchPriceETH} className="btn btn-warning btn-lg">ETH Price</button>
