@@ -11,7 +11,9 @@ function App() {
   const [ethPrice, setEthPrice] = useState('');
   const [btcPrice, setBtcPrice] = useState('');
   const [dogePrice, setDogePrice] = useState('');
+  const [pepePrice, setPepePrice] = useState('');
   const [eurPrice, setEurPrice] = useState('');
+  
 
   const fetchPrice = async () => {
     const result = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=SHIBBUSD');
@@ -53,6 +55,14 @@ function App() {
 
   };
 
+  const fetchPricePEPE = async () => {
+    const result = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=PEPEUSDT');
+    console.log(result.data.price)
+    setPepePrice(result.data.price)
+
+
+  };
+
   const fetchPriceEURO = async () => {
     const result = await axios.get('https://api.binance.com/api/v3/ticker/price?symbol=EURBUSD');
     console.log(result.data.price)
@@ -68,6 +78,9 @@ function App() {
       <div>
         <h1 className="title"> {shibPrice} </h1>
         <button onClick={fetchPrice} className="btn btn-warning btn-lg">SHIB Price</button>
+        <br />
+        <h1 className="title"> {pepePrice} </h1>
+        <button onClick={fetchPricePEPE} className="btn btn-warning btn-lg">PEPE Price</button>
         <br />
         <h1 className="title"> {luncPrice} </h1>
         <button onClick={fetchPriceLUNC} className="btn btn-warning btn-lg">LUNC Price</button>
