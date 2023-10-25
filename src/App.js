@@ -82,16 +82,14 @@ function App() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="card">
-        <h1 className="title">SHIB: {shibPrice}</h1>
-        <h1 className="title">PEPE: {pepePrice}</h1>
-        <h1 className="title">LUNC: {luncPrice}</h1>
-        <h1 className="title">DOGE: {dogePrice}</h1>
-        <h1 className="title">ETH: {ethPrice}</h1>
-        <h1 className="title">BTC: {btcPrice}</h1>
-        <h1 className="title">EUR: {eurPrice}</h1>
-      </div>
+    <div className="card">
+      <h1 className="title">SHIB: {shibPrice}</h1>
+      <h1 className="title">PEPE: {pepePrice}</h1>
+      <h1 className="title">LUNC: {luncPrice}</h1>
+      <h1 className="title">DOGE: {dogePrice}</h1>
+      <h1 className="title">ETH: {ethPrice}</h1>
+      <h1 className="title">BTC: {btcPrice}</h1>
+      <h1 className="title">EUR: {eurPrice}</h1>
     </div>
   );
 }
