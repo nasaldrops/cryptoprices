@@ -21,7 +21,6 @@ body {
 h1 {
   color: black;
   font-size: 20px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Slightly softer shadow for readability */
   margin: 10px 0; /* Add a bit of margin for spacing */
 }
 
