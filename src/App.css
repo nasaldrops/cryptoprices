@@ -1,21 +1,39 @@
+/* Reset some default styles */
+html, body, div, h1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  background: none;
+  box-shadow: none;
+}
+
 body { 
   background: linear-gradient(90deg,#1e3c72,#2a5298);
   text-align: center;
   font-family: 'Arial', sans-serif;
-  padding: 0px 0;
-  margin: 0; /* Ensure there's no default margin */
-}
-
-.title {
-  background: linear-gradient(90deg,#1e3c72,#2a5298);
-  color: white;
-  font-size: 20px;
-  text-shadow: 5px 5px rgb(0,0,0);
-  margin: 0px;
-  border: none; /* Ensure there's no border */
-  box-shadow: none; /* Ensure there's no box shadow */
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: top; /* Center content vertically */
 }
 
 h1 {
+  color: black;
+  font-size: 20px;
+  margin: 10px 0; /* Add a bit of margin for spacing */
+}
+
+h2 {
   color: white;
+  font-size: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Slightly softer shadow for readability */
+  margin: 10px 0; /* Add a bit of margin for spacing */
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center content horizontally */
 }
