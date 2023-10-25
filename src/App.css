@@ -1,44 +1,21 @@
-body {
-  background-color: rgb(28, 223, 210);
+body { 
+  background: linear-gradient(90deg,#1e3c72,#2a5298);
   text-align: center;
-}
-
-img {
-  max-width: 100%;
+  font-family: 'Arial', sans-serif;
+  padding: 0px 0;
+  margin: 0; /* Ensure there's no default margin */
 }
 
 .title {
-  color: yellow;
-  text-transform: uppercase;
-  font-size: 50px;
-  text-shadow: 5px 5px rgb(0,0,0);
-  margin-top: 50px;
-}
-
-.card {
-  margin-top: 10px;
-  
-}
-
-.btn {
-  margin-top: 50px;
-}
-h4 {
+  background: linear-gradient(90deg,#1e3c72,#2a5298);
   color: white;
-
+  font-size: 20px;
+  text-shadow: 5px 5px rgb(0,0,0);
+  margin: 0px;
+  border: none; /* Ensure there's no border */
+  box-shadow: none; /* Ensure there's no box shadow */
 }
 
-.subTitle {
-  font-size: 40px;
-  margin-top: 50px;
+h1 {
   color: white;
-  text-transform: uppercase;
-  text-shadow: 5px 5px rgb(0,0,0);
-}
-
-.wind {
-  font-size: 40px;
-  margin-top: 50px;
-  color: white;
-  text-shadow: 5px 5px rgb(0,0,0);
 }
