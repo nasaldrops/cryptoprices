@@ -3,93 +3,89 @@ import "./App.css";
 import axios from "axios";
 
 function App() {
-  const [shibPrice, setShibPrice] = useState("");
-  const [luncPrice, setLuncPrice] = useState("");
-  const [ethPrice, setEthPrice] = useState("");
-  const [btcPrice, setBtcPrice] = useState("");
-  const [dogePrice, setDogePrice] = useState("");
-  const [pepePrice, setPepePrice] = useState("");
-  const [eurPrice, setEurPrice] = useState("");
+  const [prices, setPrices] = useState({});
+  const [order, setOrder] = useState([
+    "SHIB",
+    "PEPE",
+    "LUNC",
+    "ETH",
+    "BTC",
+    "DOGE",
+    "EUR",
+  ]);
 
-  const fetchPrice = async () => {
-    const result = await axios.get(
-      "https://api.binance.com/api/v3/ticker/price?symbol=SHIBBUSD"
-    );
-    console.log(result.data.price);
-    setShibPrice(result.data.price);
+  useEffect(() => {
+    const fetchPrices = async () => {
+      const symbols = [
+        "SHIBBUSD",
+        "PEPEUSDT",
+        "LUNCBUSD",
+        "ETHBUSD",
+        "BTCBUSD",
+        "DOGEBUSD",
+        "EURBUSD",
+      ];
+      try {
+        const results = await Promise.all(
+          symbols.map((symbol) =>
+            axios.get(
+              `https://api.binance.com/api/v3/ticker/price?symbol=${symbol}`
+            )
+          )
+        );
+        const newPrices = {};
+        results.forEach((result, index) => {
+          const symbol = symbols[index].replace("BUSD", "").replace("USDT", "");
+          newPrices[symbol] = result.data.price;
+        });
+        setPrices(newPrices);
+      } catch (error) {
+        console.error("Error fetching prices:", error);
+      }
+    };
+
+    const intervalId = setInterval(fetchPrices, 1000);
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const onDragStart = (e, index) => {
+    e.dataTransfer.setData("startIndex", index);
   };
 
-  const fetchPriceLUNC = async () => {
-    const result = await axios.get(
-      "https://api.binance.com/api/v3/ticker/price?symbol=LUNCBUSD"
-    );
-    console.log(result.data.price);
-    setLuncPrice(result.data.price);
+  const onDragOver = (e) => {
+    e.preventDefault();
   };
 
-  const fetchPriceETH = async () => {
-    const result = await axios.get(
-      "https://api.binance.com/api/v3/ticker/price?symbol=ETHBUSD"
-    );
-    console.log(result.data.price);
-    setEthPrice(result.data.price);
-  };
-
-  const fetchPriceBTC = async () => {
-    const result = await axios.get(
-      "https://api.binance.com/api/v3/ticker/price?symbol=BTCBUSD"
-    );
-    console.log(result.data.price);
-    setBtcPrice(result.data.price);
-  };
-
-  const fetchPriceDOGE = async () => {
-    const result = await axios.get(
-      "https://api.binance.com/api/v3/ticker/price?symbol=DOGEBUSD"
-    );
-    console.log(result.data.price);
-    setDogePrice(result.data.price);
-  };
-
-  const fetchPricePEPE = async () => {
-    const result = await axios.get(
-      "https://api.binance.com/api/v3/ticker/price?symbol=PEPEUSDT"
-    );
-    console.log(result.data.price);
-    setPepePrice(result.data.price);
-  };
-
-  const fetchPriceEURO = async () => {
-    const result = await axios.get(
-      "https://api.binance.com/api/v3/ticker/price?symbol=EURBUSD"
-    );
-    console.log(result.data.price);
-    setEurPrice(result.data.price);
+  const onDrop = (e, endIndex) => {
+    const startIndex = parseInt(e.dataTransfer.getData("startIndex"));
+    const newOrder = [...order];
+    [newOrder[startIndex], newOrder[endIndex]] = [
+      newOrder[endIndex],
+      newOrder[startIndex],
+    ];
+    setOrder(newOrder);
   };
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      fetchPrice();
-      fetchPriceLUNC();
-      fetchPriceETH();
-      fetchPriceBTC();
-      fetchPriceDOGE();
-      fetchPricePEPE();
-      fetchPriceEURO();
-    }, 1000); // Fetch every 1000 ms (1 second)
-
-    return () => clearInterval(intervalId); // Clear the interval when the component is unmounted
-  }, []);
+    if (prices.PEPE !== undefined && prices.SHIB !== undefined) {
+      document.title = `P:${prices.PEPE} S:${prices.SHIB}`;
+    }
+  }, [prices.PEPE, prices.SHIB]);
 
   return (
     <div className="card">
-      <h1 className="title">SHIB: {shibPrice}</h1>
-      <h1 className="title">PEPE: {pepePrice}</h1>
-      <h1 className="title">LUNC: {luncPrice}</h1>
-      <h1 className="title">DOGE: {dogePrice}</h1>
-      <h1 className="title">ETH: {ethPrice}</h1>
-      <h1 className="title">BTC: {btcPrice}</h1>
-      <h1 className="title">EUR: {eurPrice}</h1>
+      {order.map((symbol, index) => (
+        <h1
+          className="title"
+          key={symbol}
+          draggable
+          onDragStart={(e) => onDragStart(e, index)}
+          onDragOver={(e) => onDragOver(e)}
+          onDrop={(e) => onDrop(e, index)}
+        >
+          {symbol}: {prices[symbol] || "Loading..."}
+        </h1>
+      ))}
     </div>
   );
 }
