@@ -17,13 +17,13 @@ function App() {
   useEffect(() => {
     const fetchPrices = async () => {
       const symbols = [
-        "SHIBBUSD",
+        "SHIBUSDT",
         "PEPEUSDT",
-        "LUNCBUSD",
-        "ETHBUSD",
-        "BTCBUSD",
-        "DOGEBUSD",
-        "EURBUSD",
+        "LUNCUSDT",
+        "ETHUSDT",
+        "BTCUSDT",
+        "DOGEUSDT",
+        "EURUSDT",
       ];
       try {
         const results = await Promise.all(
@@ -35,7 +35,7 @@ function App() {
         );
         const newPrices = {};
         results.forEach((result, index) => {
-          const symbol = symbols[index].replace("BUSD", "").replace("USDT", "");
+          const symbol = symbols[index].replace("USDT", "").replace("USDT", "");
           newPrices[symbol] = result.data.price;
         });
         setPrices(newPrices);
