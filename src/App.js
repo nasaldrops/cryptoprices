@@ -7,10 +7,10 @@ function App() {
   const [order, setOrder] = useState([
     "SHIB",
     "PEPE",
+    "SOL",
     "LUNC",
     "ETH",
     "BTC",
-    "SOL",
     "DOGE",
     "EUR",
   ]);
@@ -20,10 +20,10 @@ function App() {
       const symbols = [
         "SHIBUSDT",
         "PEPEUSDT",
+        "SOLUSDT",
         "LUNCUSDT",
         "ETHUSDT",
         "BTCUSDT",
-        "SOLUSDT",
         "DOGEUSDT",
         "EURUSDT",
       ];
