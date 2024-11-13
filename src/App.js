@@ -18,12 +18,13 @@ function App() {
     const fetchPrices = async () => {
       const symbols = [
         "SHIBUSDT",
+        "SOLUSDT",
         "PEPEUSDT",
         "LUNCUSDT",
         "ETHUSDT",
         "BTCUSDT",
         "DOGEUSDT",
-        "EURUSDT",
+        "EURUSDT"
       ];
       try {
         const results = await Promise.all(
