@@ -6,11 +6,11 @@ function App() {
   const [prices, setPrices] = useState({});
   const [order, setOrder] = useState([
     "SHIB",
-    "SOL",
     "PEPE",
     "LUNC",
     "ETH",
     "BTC",
+    "SOL",
     "DOGE",
     "EUR",
   ]);
@@ -19,11 +19,11 @@ function App() {
     const fetchPrices = async () => {
       const symbols = [
         "SHIBUSDT",
-        "SOLUSDT",
         "PEPEUSDT",
         "LUNCUSDT",
         "ETHUSDT",
         "BTCUSDT",
+        "SOLUSDT",
         "DOGEUSDT",
         "EURUSDT",
       ];
