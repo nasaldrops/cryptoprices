@@ -6,6 +6,7 @@ function App() {
   const [prices, setPrices] = useState({});
   const [order, setOrder] = useState([
     "SHIB",
+    "SOL",
     "PEPE",
     "LUNC",
     "ETH",
@@ -24,7 +25,7 @@ function App() {
         "ETHUSDT",
         "BTCUSDT",
         "DOGEUSDT",
-        "EURUSDT"
+        "EURUSDT",
       ];
       try {
         const results = await Promise.all(
